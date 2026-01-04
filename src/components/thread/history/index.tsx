@@ -271,7 +271,7 @@ export default function ThreadHistory() {
             className="flex lg:hidden"
           >
             <SheetHeader>
-              <SheetTitle>Thread History</SheetHeader>
+              <SheetTitle>Thread History</SheetTitle>
             </SheetHeader>
             <div className="mb-4">
               <Button
