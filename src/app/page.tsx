@@ -4,9 +4,10 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/providers/AuthProvider'
 import { Button } from '@/components/ui/button'
-import { BlackSmithLogoSVG } from '@/components/icons/blacksmith'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Zap, Shield, MessageSquare } from 'lucide-react'
+import { Bot, Shield, FileText } from 'lucide-react'
+import Antigravity from '@/components/3d/Antigravity'
+import ThemeToggle from '@/components/ui/theme-toggle'
 
 export default function LandingPage() {
   const router = useRouter()
@@ -30,144 +31,104 @@ export default function LandingPage() {
     return null
   }
 
-  const features = [
-    {
-      icon: <MessageSquare className="h-6 w-6" />,
-      title: 'AI-Powered Conversations',
-      description: 'Chat with advanced AI that understands context and provides intelligent responses.',
-    },
-    {
-      icon: <Sparkles className="h-6 w-6" />,
-      title: 'Persistent History',
-      description: 'Access your conversations anywhere. Your chat history is securely saved.',
-    },
-    {
-      icon: <Zap className="h-6 w-6" />,
-      title: 'Fast & Responsive',
-      description: 'Built with modern technology for lightning-fast responses.',
-    },
-    {
-      icon: <Shield className="h-6 w-6" />,
-      title: 'Secure & Private',
-      description: 'Your data is protected with enterprise-grade security.',
-    },
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted">
+    <main className="relative min-h-screen bg-gradient-to-br from-[#0a0a0f] to-[#1a1a2e] overflow-hidden">
+      {/* Antigravity Background */}
+      <div className="absolute inset-0 -z-10">
+        <Antigravity
+          count={300}
+          color="#8b5cf6"
+          autoAnimate={true}
+          particleShape="capsule"
+        />
+      </div>
+
+      {/* Navigation Bar */}
+      <nav className="w-full px-6 md:px-12 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">⚒️</span>
+            <span className="text-xl font-bold text-white">BlacksmithAI</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Button
+              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold"
+              asChild
+            >
+              <a href="/login">Get Started</a>
+            </Button>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
-      <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 max-w-6xl w-full">
-          {/* Left Content */}
-          <motion.div
+      <section className="w-full px-6 md:px-12 py-20 md:py-32">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Headline */}
+          <motion.h1
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col justify-center space-y-8"
+            transition={{ duration: 0.6 }}
           >
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <BlackSmithLogoSVG width={64} height={64} className="text-primary" />
-              <h1 className="text-3xl font-bold">Blacksmith AI</h1>
-            </div>
+            AI-Powered{' '}
+            <span className="bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
+              Security Testing
+            </span>
+          </motion.h1>
 
-            {/* Headline */}
-            <div className="space-y-4">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-5xl font-bold tracking-tight lg:text-6xl"
-              >
-                Build Smarter with{' '}
-                <span className="text-primary">AI-Powered Chat</span>
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-xl text-muted-foreground"
-              >
-                Transform your ideas into reality with intelligent conversations that
-                understand context and deliver results.
-              </motion.p>
-            </div>
+          {/* Subheadline */}
+          <motion.p
+            className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Automate complete penetration testing lifecycles from reconnaissance to reporting with intelligent multi-agent orchestration
+          </motion.p>
 
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col gap-4 sm:flex-row"
+          {/* CTA Buttons */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-5 justify-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold px-10 py-6 text-base"
+              asChild
             >
-              <Button
-                size="lg"
-                className="text-lg"
-                onClick={() => router.push('/signup')}
-              >
-                Get Started
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg"
-                onClick={() => router.push('/login')}
-              >
-                Sign In
-              </Button>
-            </motion.div>
+              <a href="/login">Get Started</a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white/10 font-semibold px-10 py-6 text-base"
+              asChild
+            >
+              <a href="#video">Watch Demo</a>
+            </Button>
           </motion.div>
 
-          {/* Right Content - Visual Element */}
+          {/* Video Embed */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center justify-center"
+            className="w-full max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            id="video"
           >
-            <div className="relative">
-              {/* Decorative gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-primary/5 rounded-full blur-3xl"></div>
-
-              {/* Chat UI Mockup */}
-              <div className="relative bg-background border rounded-2xl shadow-2xl p-6 space-y-4 max-w-md">
-                {/* Fake messages */}
-                <div className="space-y-3">
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Sparkles className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="flex-1 space-y-2">
-                      <div className="bg-muted rounded-lg p-3 text-sm">
-                        How can I help you build today?
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3 justify-end">
-                    <div className="bg-primary text-primary-foreground rounded-lg p-3 text-sm max-w-xs">
-                      Help me create a modern authentication system
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Sparkles className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-muted rounded-lg p-3 text-sm">
-                        I'll help you build a secure auth system with Supabase. Let's start with...
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Input field mockup */}
-                <div className="flex gap-2 pt-2">
-                  <div className="flex-1 h-10 bg-muted rounded-lg"></div>
-                  <div className="w-10 h-10 bg-primary rounded-lg"></div>
-                </div>
+            <div className="relative rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-white/5 p-2">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  src="https://www.youtube-nocookie.com/embed/vIUOOi3VB6Y"
+                  title="BlacksmithAI Demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
             </div>
           </motion.div>
@@ -175,66 +136,100 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="border-t bg-muted/30 px-4 py-24">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h3 className="text-3xl font-bold mb-4">Why Choose Blacksmith AI?</h3>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Experience the next generation of AI-powered conversations with features designed for modern teams.
-            </p>
-          </motion.div>
+      <section className="w-full px-6 md:px-12 py-20 md:py-32">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Feature Card 1: Multi-Agent Intelligence */}
+            <motion.div
+              className="p-8 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="w-12 h-12 rounded-lg border border-purple-500/30 bg-purple-500/10 flex items-center justify-center mb-6">
+                <Bot className="w-6 h-6 text-purple-500" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-3">Multi-Agent Intelligence</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Specialized AI agents orchestrate complete penetration testing lifecycles from reconnaissance to post-exploitation
+              </p>
+            </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="bg-background p-6 rounded-xl border shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="mb-4 text-primary">{feature.icon}</div>
-                <h4 className="font-semibold mb-2">{feature.title}</h4>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
-              </motion.div>
-            ))}
+            {/* Feature Card 2: Professional Tooling */}
+            <motion.div
+              className="p-8 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="w-12 h-12 rounded-lg border border-blue-500/30 bg-blue-500/10 flex items-center justify-center mb-6">
+                <Shield className="w-6 h-6 text-blue-500" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-3">Professional Tooling</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Industry-standard security tools pre-configured in a controlled sandbox environment designed for AI agent execution
+              </p>
+            </motion.div>
+
+            {/* Feature Card 3: Automated Reporting */}
+            <motion.div
+              className="p-8 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-12 h-12 rounded-lg border border-indigo-500/30 bg-indigo-500/10 flex items-center justify-center mb-6">
+                <FileText className="w-6 h-6 text-indigo-500" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-3">Automated Reporting</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Comprehensive security assessment reports generated automatically with evidence, findings, and actionable recommendations
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="border-t px-4 py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mx-auto max-w-3xl text-center space-y-8"
-        >
-          <h3 className="text-4xl font-bold">Ready to Get Started?</h3>
-          <p className="text-xl text-muted-foreground">
-            Join thousands of users who are already building smarter with AI.
-          </p>
-          <div className="flex flex-col gap-4 sm:flex-row justify-center">
+      {/* Final CTA Section */}
+      <section className="w-full px-6 md:px-12 py-20 md:py-32">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Ready to Transform Your Security Testing?
+          </motion.h2>
+          <motion.p
+            className="text-lg md:text-xl text-gray-400 mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Join the future of automated penetration testing
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <Button
               size="lg"
-              className="text-lg"
-              onClick={() => router.push('/signup')}
+              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold px-12 py-6 text-base"
+              asChild
             >
-              Create Free Account
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <a href="/signup">Get Started</a>
             </Button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
-    </div>
+    </main>
   )
 }
