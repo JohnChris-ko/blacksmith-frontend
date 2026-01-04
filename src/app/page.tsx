@@ -32,7 +32,7 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="relative min-h-screen bg-gradient-to-br from-[#0a0a0f] to-[#1a1a2e] overflow-hidden">
+    <main className="relative min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#0a0a0f] dark:to-[#1a1a2e] overflow-hidden">
       {/* Antigravity Background */}
       <div className="absolute inset-0 -z-10">
         <Antigravity
@@ -48,12 +48,12 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-2xl">⚒️</span>
-            <span className="text-xl font-bold text-white">BlacksmithAI</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white">BlacksmithAI</span>
           </div>
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <Button
-              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold"
+              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold hover:from-purple-600 hover:to-indigo-700"
               asChild
             >
               <a href="/login">Get Started</a>
@@ -67,7 +67,7 @@ export default function LandingPage() {
         <div className="max-w-5xl mx-auto text-center">
           {/* Headline */}
           <motion.h1
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -80,7 +80,7 @@ export default function LandingPage() {
 
           {/* Subheadline */}
           <motion.p
-            className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -97,7 +97,7 @@ export default function LandingPage() {
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold px-10 py-6 text-base"
+              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold px-10 py-6 text-base hover:from-purple-600 hover:to-indigo-700"
               asChild
             >
               <a href="/login">Get Started</a>
@@ -105,7 +105,7 @@ export default function LandingPage() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white/10 font-semibold px-10 py-6 text-base"
+              className="border-gray-300 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 font-semibold px-10 py-6 text-base"
               asChild
             >
               <a href="#video">Watch Demo</a>
@@ -120,7 +120,7 @@ export default function LandingPage() {
             transition={{ duration: 0.6, delay: 0.6 }}
             id="video"
           >
-            <div className="relative rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-white/5 p-2">
+            <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-2">
               <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-lg"
@@ -141,7 +141,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Feature Card 1: Multi-Agent Intelligence */}
             <motion.div
-              className="p-8 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              className="p-8 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -150,15 +150,15 @@ export default function LandingPage() {
               <div className="w-12 h-12 rounded-lg border border-purple-500/30 bg-purple-500/10 flex items-center justify-center mb-6">
                 <Bot className="w-6 h-6 text-purple-500" />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">Multi-Agent Intelligence</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Multi-Agent Intelligence</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                 Specialized AI agents orchestrate complete penetration testing lifecycles from reconnaissance to post-exploitation
               </p>
             </motion.div>
 
             {/* Feature Card 2: Professional Tooling */}
             <motion.div
-              className="p-8 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              className="p-8 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -167,15 +167,15 @@ export default function LandingPage() {
               <div className="w-12 h-12 rounded-lg border border-blue-500/30 bg-blue-500/10 flex items-center justify-center mb-6">
                 <Shield className="w-6 h-6 text-blue-500" />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">Professional Tooling</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Professional Tooling</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                 Industry-standard security tools pre-configured in a controlled sandbox environment designed for AI agent execution
               </p>
             </motion.div>
 
             {/* Feature Card 3: Automated Reporting */}
             <motion.div
-              className="p-8 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              className="p-8 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300 hover:scale-105"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -184,8 +184,8 @@ export default function LandingPage() {
               <div className="w-12 h-12 rounded-lg border border-indigo-500/30 bg-indigo-500/10 flex items-center justify-center mb-6">
                 <FileText className="w-6 h-6 text-indigo-500" />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">Automated Reporting</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Automated Reporting</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                 Comprehensive security assessment reports generated automatically with evidence, findings, and actionable recommendations
               </p>
             </motion.div>
@@ -197,7 +197,7 @@ export default function LandingPage() {
       <section className="w-full px-6 md:px-12 py-20 md:py-32">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -206,7 +206,7 @@ export default function LandingPage() {
             Ready to Transform Your Security Testing?
           </motion.h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-400 mb-10"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -222,7 +222,7 @@ export default function LandingPage() {
           >
             <Button
               size="lg"
-              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold px-12 py-6 text-base"
+              className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold px-12 py-6 text-base hover:from-purple-600 hover:to-indigo-700"
               asChild
             >
               <a href="/signup">Get Started</a>

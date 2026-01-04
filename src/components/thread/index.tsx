@@ -36,6 +36,8 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
 import { GitHubSVG } from "../icons/github";
+import UserMenu from "../ui/user-menu";
+import { useAuth } from "@/providers/AuthProvider";
 import {
   Tooltip,
   TooltipContent,
@@ -117,6 +119,7 @@ function OpenGitHubRepo() {
 }
 
 export function Thread() {
+  const { user } = useAuth();
   const [artifactContext, setArtifactContext] = useArtifactContext();
   const [artifactOpen, closeArtifact] = useArtifactOpen();
 
@@ -493,15 +496,6 @@ export function Thread() {
                 <TooltipIconButton
                   size="lg"
                   className="p-4"
-                  tooltip="Sign out"
-                  variant="ghost"
-                  onClick={() => signOut()}
-                >
-                  <LogOut className="size-5" />
-                </TooltipIconButton>
-                <TooltipIconButton
-                  size="lg"
-                  className="p-4"
                   tooltip="New thread"
                   variant="ghost"
                   onClick={() => {
@@ -512,6 +506,10 @@ export function Thread() {
                 >
                   <SquarePen className="size-5" />
                 </TooltipIconButton>
+                <UserMenu
+                  userName={user?.user_metadata?.name || user?.email?.split('@')[0]}
+                  userEmail={user?.email}
+                />
               </div>
 
               <div className="from-background to-background/0 absolute inset-x-0 top-full h-5 bg-gradient-to-b" />
