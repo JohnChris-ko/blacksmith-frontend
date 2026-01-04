@@ -32,14 +32,16 @@ export default function ChatPage() {
   }
 
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <ThreadProvider>
-        <StreamProvider>
-          <ArtifactProvider>
-            <Thread />
-          </ArtifactProvider>
-        </StreamProvider>
-      </ThreadProvider>
-    </React.Suspense>
+    <div className="light">
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <ThreadProvider>
+          <StreamProvider>
+            <ArtifactProvider>
+              <Thread />
+            </ArtifactProvider>
+          </StreamProvider>
+        </ThreadProvider>
+      </React.Suspense>
+    </div>
   )
 }
